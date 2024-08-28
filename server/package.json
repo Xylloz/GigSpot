@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "rm -rf dist node_modules"
   },
   "keywords": [],
   "author": "",
