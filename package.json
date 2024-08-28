@@ -7,13 +7,16 @@
     "start:client": "cd client && npm run dev",
     "start:server": "cd server && npm run dev",
     "install": "cd client && npm install && cd ../server && npm install",
-    "build": "cd client && npm run build && cd ../backend && npm run build"
+    "build": "cd client && npm run build && cd ../server && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/babel__template": "^7.4.4",
+    "@types/babel__traverse": "^7.20.6",
+    "@types/prop-types": "^15.7.12",
     "concurrently": "^8.2.2"
   }
 }
