@@ -1,8 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import Splashpage from '../components/splashpage.tsx';
-import UserForm from '../components/UserForm.tsx';
+import Splashpage from './components/Splashpage.tsx';
+import UserForm from './components/UserForm.tsx';
 import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
