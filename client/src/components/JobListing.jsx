@@ -8,9 +8,9 @@ const JobListing = ({job})=>{
       >
             <p className="job-title text-3xl">{job.title}</p>
             <p>Offer: ${job.offer}/hour</p>
-            <p>Posted by: ${job.poster}</p>
-            <p>Location: ${job.location}</p>
-            <p>Date: ${job.date}</p>
+            <p>Posted by: {job.poster}</p>
+            <p>Location: {job.location}</p>
+            <p>Date: {job.date}</p>
             <button className=" my-2 rounded-lg bg-blue-950 text-white hover:bg-blue-400 " onClick={()=> alert(`You have just applied for ${job.title}`)}> Apply </button>
         
             </li>
