@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <p className="bg-red-500 text-blue-800">Hello Client!!✅</p>
 
-      <h1>Job Listings</h1>
+      <h1 className="m-10 text-3xl text-sky-950 ">Job Listings</h1>
       <JobListingPage />
     </div>
   );
