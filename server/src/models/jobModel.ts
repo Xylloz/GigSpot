@@ -20,13 +20,13 @@ interface IJob extends Document {
 }
 
 const JobSchema = new mongoose.Schema({
-  employer: { type: Schema.Types.ObjectId, required: true },
+  employer: { type: Schema.Types.ObjectId, ref: 'User', required: false }, // required to false until there are User entries to test
   title: { type: String, required: true },
   description: { type: String, required: true },
   category: { type: String, required: true },
   location: { type: String, required: true },
   budget: {
-    type: { String, enum: ["Fixed", "Hourly"], required: true },
+    type: { type: String, enum: ["Fixed", "Hourly"], required: true },
     amount: { type: Number, required: true },
   },
   requiredSkills: { type: [String], required: true },
@@ -35,7 +35,7 @@ const JobSchema = new mongoose.Schema({
     enum: ["Apprentice", "Intermediate", "Expert"],
     required: true,
   },
-  datePosted: { type: String, default: Date.now },
+  datePosted: { type: Date, default: Date.now },
   status: {
     type: String,
     enum: ["Open", "In Progress", "Completed", "Cancelled"],
