@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "types": [
+      "babel__core",
+      "babel__generator",
+      "babel__template",
+      "babel__traverse",
+      "prop-types"
+    ]
+  },
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
