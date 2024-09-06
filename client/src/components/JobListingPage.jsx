@@ -1,37 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import JobListing from './JobListing';
 import SearchFilter from './SearchFilter';
 
 
-const initialJobs = [
-  {
-    poster: 'Mr. Smith',
-    title: 'Site Cleaner',
-    offer: '10',
-    location: 'New York City',
-    date: '28 Aug 2024',
-  },
-  {
-    poster: 'Mr. Smith',
-    title: 'Site Cleaner',
-    offer: '20',
-    location: 'New York City',
-    date: '28 Aug 2024',
-  },
-  {
-    poster: 'Mr. Smith',
-    title: 'Site Cleaner',
-    offer: '30',
-    location: 'New York City',
-    date: '28 Aug 2024',
-  },
-
-]
-
 const JobListingPage =()=>{
-    const [jobs, setJobs] = useState(initialJobs);
-    const [filteredJobs, setFilteredJobs] = useState(initialJobs);
+    const [jobs, setJobs] = useState([]);
+    const [filteredJobs, setFilteredJobs] = useState([]);
 
+    useEffect(()=>{
+      const getJobs = async ()=>{
+        try{
+          const response = await fetch('/api/jobs/');
+          const data = await response.json();
+          console.log('data=====>',data)
+          setJobs(data.jobs)
+          setFilteredJobs(data.jobs)
+        } catch (error){
+          console.error('Error fetching jobs:', error)
+        }
+      }
+      getJobs()
+    },[])
+   
+ 
 
     const handleSearch = (term) => {
         const filtered = jobs.filter((job) =>
