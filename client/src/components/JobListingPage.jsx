@@ -39,13 +39,17 @@ const JobListingPage =()=>{
       };
     
     return (
+      <div>
+        <p className="box-border hover:box-content bg-gradient-to-br from-indigo-600 to-pink-500 text-white px-10 my-3 font-bold text-5xl">Job Listings</p>
         <div className='job-listing-page m-3'>
-            <SearchFilter onSearch={handleSearch} onFilter={handleFilter} />
-            <ul className='job-listings'>
-            {filteredJobs.map((job,index)=>(
-                <JobListing key={index} job={job} index={index}/>
-            ))}</ul>
+          <SearchFilter onSearch={handleSearch} onFilter={handleFilter} />
+          <ul className='job-listings'>
+          {filteredJobs.map((job,index)=>(
+          <JobListing key={index} job={job} index={index}/>
+          ))}</ul>
         </div>
+      </div>
+        
     )
 }
 
