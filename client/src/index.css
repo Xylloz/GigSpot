@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.job-listings-page {
+    padding: 20px;
+  }
+  
+  .search-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-color: lightgray;
+  }
+  
+  .job-listing {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: rgb(90, 178, 219);
+    border-radius: 8%;
+    color: whitesmoke;
+  }
