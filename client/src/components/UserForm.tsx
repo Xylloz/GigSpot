@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 
+const states = ["Alabama", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
+"Delaware", "Florida", "Georgia", "Idaho", "Illinois", "Indiana", "Iowa",
+"Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts",
+"Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska",
+"Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina",
+"North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island",
+"South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+"Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
+
 interface FormProps {
   formType: 'employee' | 'employer';
 }
@@ -123,17 +132,21 @@ function Form({ formType }: FormProps) {
 
         {/* State Input */}
         <div className="mb-4">
-          <label className="block text-gray-700">State</label>
-          <input
-            type="text"
-            name="state"
-            value={formData.state}
-            onChange={handleChange}
-            className={`w-full px-3 py-2 border rounded-lg ${errors.state ? 'border-red-500' : 'border-gray-300'}`}
-            placeholder="Enter your state"
-          />
-          {errors.state && <p className="text-red-500 text-sm mt-1">State is required.</p>}
-        </div>
+        <label className="block text-gray-700">State</label>
+        <select
+    name="state"
+    value={formData.state}
+    onChange={handleChange}
+    className={`w-full px-3 py-2 border rounded-lg ${errors.state ? 'border-red-500' : 'border-gray-300'}`}
+  >
+    <option value="" disabled>Select your state</option>
+    {states.map((state, index) => (
+      <option key={index} value={state}>{state}</option>
+    ))}
+  </select>
+  {errors.state && <p className="text-red-500 text-sm mt-1">State is required.</p>}
+</div>
+
 
         {/* Gender Dropdown */}
         <div className="mb-4">
