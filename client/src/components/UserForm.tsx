@@ -12,7 +12,7 @@ function Form({ formType }: FormProps) {
     city: '',
     state: '',
     gender: '',
-    birthdate: '',
+    // birthdate: '',
   });
 
   const [errors, setErrors] = useState({
@@ -22,10 +22,10 @@ function Form({ formType }: FormProps) {
     city: false,
     state: false,
     gender: false,
-    birthdate: false,
+    // birthdate: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange =  (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -37,7 +37,7 @@ function Form({ formType }: FormProps) {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newErrors = {
@@ -47,7 +47,7 @@ function Form({ formType }: FormProps) {
       city: formData.city.trim() === '',
       state: formData.state.trim() === '',
       gender: formData.gender.trim() === '',
-      birthdate: formData.birthdate.trim() === '',
+      // birthdate: formData.birthdate.trim() === '',
     };
 
     if (Object.values(newErrors).some((error) => error)) {
@@ -56,6 +56,24 @@ function Form({ formType }: FormProps) {
     }
 
     console.log(formData);
+    try{
+      const response = await fetch('api/users/',{
+        method: 'POST',
+        headers: {'Content-Type': 'application/json',}
+      ,
+      body: JSON.stringify({
+        ...formData,
+        accountType: formType === 'employee' ? 'Contractor' : 'Employer',
+        location: `${formData.city}, ${formData.state}`,
+        password:`${formData.phoneNumber}`
+      })
+    })
+    if (response.ok){
+      console.log('User added successfully')
+    }else{
+      console.error('Failed to add user')
+    }
+    }catch(error){console.error('Error in adding user',error)}
   };
 
   return (
@@ -155,7 +173,7 @@ function Form({ formType }: FormProps) {
         </div>
 
         {/* Birthdate Input */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-gray-700">Birthdate</label>
           <input
             type="date"
@@ -165,7 +183,9 @@ function Form({ formType }: FormProps) {
             className={`w-full px-3 py-2 border rounded-lg ${errors.birthdate ? 'border-red-500' : 'border-gray-300'}`}
           />
           {errors.birthdate && <p className="text-red-500 text-sm mt-1">Birthdate is required.</p>}
-        </div>
+        </div> */}
+   
+
 
         <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg font-bold">
           Submit
@@ -176,5 +196,3 @@ function Form({ formType }: FormProps) {
 }
 
 export default Form;
-
-console.log("test tes tes test test test tessssss")
