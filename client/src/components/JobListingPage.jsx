@@ -39,7 +39,7 @@ const JobListingPage =()=>{
       };
     
     return (
-        <div className='job-listing-page m-10'>
+        <div className='job-listing-page m-3'>
             <SearchFilter onSearch={handleSearch} onFilter={handleFilter} />
             <ul className='job-listings'>
             {filteredJobs.map((job,index)=>(

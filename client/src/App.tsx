@@ -4,9 +4,8 @@ import './index.css';
 function App() {
   return (
     <div className="App">
-      <p className="bg-red-500 text-blue-800">Hello Client!!✅</p>
 
-      <h1 className="m-10 text-3xl text-sky-950 ">Job Listings</h1>
+      <p className="box-border hover:box-content bg-gradient-to-br from-indigo-600 to-pink-500 text-white px-10 my-3 font-bold text-5xl">Job Listings</p>
       <JobListingPage />
     </div>
   );
