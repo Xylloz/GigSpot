@@ -56,17 +56,19 @@ function Form({ formType }: FormProps) {
     }
 
     console.log(formData);
+    const postData = {
+      ...formData,
+      password: 'defaultPassword123', // Add a default password or handle this in the UI
+      accountType: "Employer" ,
+      location: `${formData.city}, ${formData.state}`,
+    }
+    console.log(postData)
     try{
-      const response = await fetch('api/users/',{
+      const response = await fetch('/api/users/',{
         method: 'POST',
         headers: {'Content-Type': 'application/json',}
       ,
-      body: JSON.stringify({
-        ...formData,
-        accountType: formType === 'employee' ? 'Contractor' : 'Employer',
-        location: `${formData.city}, ${formData.state}`,
-        password:`${formData.phoneNumber}`
-      })
+      body: JSON.stringify(postData)
     })
     if (response.ok){
       console.log('User added successfully')
