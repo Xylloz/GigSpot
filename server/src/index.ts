@@ -1,20 +1,22 @@
+import bodyParser from "body-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import express, { Express, Request, Response } from "express";
 import connectMongoDB from "./db/database";
 import router from "./routes/";
-import bodyParser from 'body-parser';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
-const cors = require('cors');
-app.use(cors());
+
+app.use(cors<Request>());
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 connectMongoDB();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended:true }));
+
 app.use("/", router);
 
 // Root path
